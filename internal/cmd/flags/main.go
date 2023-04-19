@@ -18,6 +18,7 @@ var list = []listItem{
 	{Name: "Buffersrc"},
 	{Name: "CodecContext"},
 	{Name: "CodecContext", Suffix: "2"},
+	{Name: "DeviceType"},
 	{Name: "Dictionary"},
 	{Name: "FilterCommand"},
 	{Name: "FormatContextCtx"},

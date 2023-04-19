@@ -44,15 +44,6 @@ func TestCodecContextFlags2(t *testing.T) {
 	require.False(t, fs.Has(astiav.CodecContextFlag2(2)))
 }
 
-func TestDeviceTypeFlags(t *testing.T) {
-	fs := astiav.NewDeviceTypeFlags(astiav.DeviceTypeFlag(1))
-	require.True(t, fs.Has(astiav.DeviceTypeFlag(1)))
-	fs = fs.Add(astiav.DeviceTypeFlag(2))
-	require.True(t, fs.Has(astiav.DeviceTypeFlag(2)))
-	fs = fs.Del(astiav.DeviceTypeFlag(2))
-	require.False(t, fs.Has(astiav.DeviceTypeFlag(2)))
-}
-
 func TestDictionaryFlags(t *testing.T) {
 	fs := astiav.NewDictionaryFlags(astiav.DictionaryFlag(1))
 	require.True(t, fs.Has(astiav.DictionaryFlag(1)))

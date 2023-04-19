@@ -81,26 +81,6 @@ func (fs CodecContextFlags2) Del(f CodecContextFlag2) CodecContextFlags2 {
 
 func (fs CodecContextFlags2) Has(f CodecContextFlag2) bool { return flags(fs).has(int(f)) }
 
-type DeviceTypeFlags flags
-
-func NewDeviceTypeFlags(fs ...DeviceTypeFlag) DeviceTypeFlags {
-	o := DeviceTypeFlags(0)
-	for _, f := range fs {
-		o = o.Add(f)
-	}
-	return o
-}
-
-func (fs DeviceTypeFlags) Add(f DeviceTypeFlag) DeviceTypeFlags {
-	return DeviceTypeFlags(flags(fs).add(int(f)))
-}
-
-func (fs DeviceTypeFlags) Del(f DeviceTypeFlag) DeviceTypeFlags {
-	return DeviceTypeFlags(flags(fs).del(int(f)))
-}
-
-func (fs DeviceTypeFlags) Has(f DeviceTypeFlag) bool { return flags(fs).has(int(f)) }
-
 type DictionaryFlags flags
 
 func NewDictionaryFlags(fs ...DictionaryFlag) DictionaryFlags {

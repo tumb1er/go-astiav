@@ -237,6 +237,14 @@ func (cc *CodecContext) SetDeviceContext(ref *BufferRef) {
 	cc.c.hw_device_ctx = ref.c
 }
 
+func (cc *CodecContext) FramesContext() *BufferRef {
+	return newBufferFromC(cc.c.hw_frames_ctx)
+}
+
+func (cc *CodecContext) SetFramesContext(br *BufferRef) {
+	cc.c.hw_frames_ctx = br.c
+}
+
 func (cc *CodecContext) ReceivePacket(p *Packet) error {
 	var pc *C.struct_AVPacket
 	if p != nil {

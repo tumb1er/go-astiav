@@ -5,10 +5,11 @@ package astiav
 // #include <libavutil/hwcontext.h>
 import "C"
 
-type DeviceTypeFlag uint32
+type DeviceType uint32
 
 const (
-	DeviceTypeVAAPI = DeviceTypeFlag(C.AV_HWDEVICE_TYPE_VAAPI)
-	DeviceTypeQSV   = DeviceTypeFlag(C.AV_HWDEVICE_TYPE_QSV)
-	DeviceTypeCUDA  = DeviceTypeFlag(C.AV_HWDEVICE_TYPE_CUDA)
+	DeviceTypeVAAPI = DeviceType(C.AV_HWDEVICE_TYPE_VAAPI)
+	DeviceTypeQSV   = DeviceType(C.AV_HWDEVICE_TYPE_QSV)
+	DeviceTypeCUDA  = DeviceType(C.AV_HWDEVICE_TYPE_CUDA)
+	DeviceTypeNone  = DeviceType(C.AV_HWDEVICE_TYPE_NONE)
 )

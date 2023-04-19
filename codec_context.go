@@ -1,8 +1,8 @@
 package astiav
 
-//#cgo pkg-config: libavcodec libavutil
-//#include <libavcodec/avcodec.h>
-//#include <libavutil/frame.h>
+// #cgo pkg-config: libavcodec libavutil
+// #include <libavcodec/avcodec.h>
+// #include <libavutil/frame.h>
 import "C"
 
 // https://github.com/FFmpeg/FFmpeg/blob/n5.0/libavcodec/avcodec.h#L383
@@ -58,7 +58,7 @@ func (cc *CodecContext) ChannelLayout() *ChannelLayout {
 }
 
 func (cc *CodecContext) SetChannelLayout(l *ChannelLayout) {
-	l.copy(&cc.c.ch_layout) //nolint: errcheck
+	l.copy(&cc.c.ch_layout) // nolint: errcheck
 }
 
 func (cc *CodecContext) ChromaLocation() ChromaLocation {
@@ -227,6 +227,22 @@ func (cc *CodecContext) Open(c *Codec, d *Dictionary) error {
 		dc = &d.c
 	}
 	return newError(C.avcodec_open2(cc.c, c.c, dc))
+}
+
+func (cc *CodecContext) DeviceContext() *BufferRef {
+	return newBufferFromC(cc.c.hw_device_ctx)
+}
+
+func (cc *CodecContext) SetDeviceContext(ref *BufferRef) {
+	cc.c.hw_device_ctx = ref.c
+}
+
+func (cc *CodecContext) FramesContext() *BufferRef {
+	return newBufferFromC(cc.c.hw_frames_ctx)
+}
+
+func (cc *CodecContext) SetFramesContext(br *BufferRef) {
+	cc.c.hw_frames_ctx = br.c
 }
 
 func (cc *CodecContext) ReceivePacket(p *Packet) error {

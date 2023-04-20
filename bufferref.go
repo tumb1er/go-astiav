@@ -27,3 +27,7 @@ func (br *BufferRef) Ref() *BufferRef {
 func (br *BufferRef) Unref() {
 	C.av_buffer_unref(&br.c)
 }
+
+func AllocFramesContext(br *BufferRef) (fc *BufferRef) {
+	return newBufferFromC(C.av_hwframe_ctx_alloc(br.c))
+}

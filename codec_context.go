@@ -339,3 +339,7 @@ func (cc *CodecContext) PacketTimeBase() Rational {
 func (cc *CodecContext) SetPacketTimeBase(tb Rational) {
 	cc.c.pkt_timebase = tb.c
 }
+
+func (cc *CodecContext) DeviceContext() *BufferRef {
+	return newBufferFromC(cc.c.hw_device_ctx)
+}

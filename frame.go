@@ -196,3 +196,7 @@ func (f *Frame) MoveRef(src *Frame) {
 func (f *Frame) BestEffortTimestamp() int64 {
 	return int64(f.c.best_effort_timestamp)
 }
+
+func (f *Frame) FramesContext() *BufferRef {
+	return newBufferFromC(f.c.hw_frames_ref)
+}

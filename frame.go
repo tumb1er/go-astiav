@@ -198,5 +198,5 @@ func (f *Frame) BestEffortTimestamp() int64 {
 }
 
 func (f *Frame) FramesContext() *BufferRef {
-	return newBufferFromC(f.c.hw_frames_ref)
+	return newBufferFromC(f.c.hw_frames_ctx)
 }
